@@ -1,0 +1,15 @@
+name: Deploy to WP Engine
+on:
+  push:
+    branches:
+     - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: GitHub Action Deploy to WP Engine
+      uses: wpengine/github-action-wpe-site-deploy@v3
+      with:
+        WPE_SSHG_KEY_PRIVATE: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOTuFJPG6hBGxOPjYnLeITAaf/MXatj/8VVuo2aEz3cf michaelmosley@Michaels-MacBook-Air.local
+        WPE_ENV: sandbox12dev
