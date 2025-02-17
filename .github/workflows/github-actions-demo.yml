@@ -25,5 +25,4 @@ jobs:
 
             touch .env
             echo GOOGLE_API_KEY = $WPE_SSHG_KEY_PRIVATE >> .env
-
             cat .env | awk '$1=$1' FS= OFS=" "
