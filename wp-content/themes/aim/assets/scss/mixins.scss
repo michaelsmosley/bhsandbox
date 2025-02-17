@@ -1,0 +1,39 @@
+@use "breakpoints";
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin hide {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  user-select: none;
+  pointer-events: none;
+}
+
+@mixin show($display) {
+  display: $display;
+  visibility: visible;
+  opacity: 1;
+  user-select: auto;
+  pointer-events: auto;
+}
+
+@mixin wider {
+  margin-right: -20px;
+  margin-left: -20px;
+  @include breakpoints.tablet {
+    margin-right: -40px;
+    margin-left: -40px;
+  }
+  @include breakpoints.laptop {
+    margin-right: -60px;
+    margin-left: -60px;
+  }
+  @include breakpoints.desktop {
+    margin-right: -80px;
+    margin-left: -80px;
+  }
+}

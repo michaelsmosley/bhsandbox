@@ -1,0 +1,207 @@
+@use "../../assets/scss/breakpoints";
+@use "../../assets/scss/colors";
+@use "../../assets/scss/typography" as *;
+
+.benefits-text-list {
+  padding: 32px 0;
+
+  @include breakpoints.tablet {
+    padding: 48px 0;
+  }
+
+  @include breakpoints.desktop {
+    padding: 48px 0;
+  }
+
+  &__eyebrow {
+    @include typography(h8);
+    font-weight: 500;
+    line-height: 110%;
+
+    position: relative;
+    display: inline-block;
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 38px;
+      height: 2px;
+      background-color: colors.$primary-orange;
+    }
+  }
+
+  &__headline {
+    @include typography(h5-stabil);
+    margin-bottom: 64px;
+
+    @include breakpoints.tablet {
+      @include typography(h3);
+    }
+
+    @include breakpoints.desktop {
+      margin-bottom: 48px;
+    }
+
+    a {
+      color: colors.$primary-navy;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    align-items: stretch;
+
+    @include breakpoints.tablet {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    @include breakpoints.laptop {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px 20px;
+    }
+
+    @include breakpoints.desktop {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid colors.$neutral-6-gray;
+    padding-bottom: 24px;
+
+    @include breakpoints.laptop {
+      gap: 20px;
+      border-bottom: none;
+    }
+  }
+
+  &__item-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    position: relative;
+    padding: 0;
+
+    @include breakpoints.laptop {
+      cursor: text;
+      user-select: text;
+    }
+  }
+
+  &__item-icon {
+    position: absolute;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    margin-right: 4px;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      background-color: colors.$neutral-10-black;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: transform 0.3s ease;
+    }
+
+    &::before {
+      width: 2px;
+      height: 22px;
+    }
+
+    &::after {
+      width: 22px;
+      height: 2px;
+    }
+
+    @include breakpoints.laptop {
+      display: none;
+    }
+  }
+
+  &__checkbox:checked {
+    & ~ .benefits-text-list__item-content {
+      max-height: 1000px;
+      transition: max-height 0.4s ease-in;
+    }
+
+    &
+      + .benefits-text-list__item-header
+      .benefits-text-list__item-icon::before {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+  }
+
+  &__item-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+
+    @include breakpoints.laptop {
+      max-height: none;
+      overflow: visible;
+    }
+  }
+
+  &__item-content-inner {
+    padding-top: 16px;
+
+    @include breakpoints.laptop {
+      padding-top: 0;
+    }
+  }
+
+  &__item-image {
+    width: 54px;
+    height: 54px;
+
+    margin-bottom: 16px;
+
+    @include breakpoints.laptop {
+      margin-bottom: 24px;
+    }
+
+    img {
+      object-fit: contain;
+    }
+  }
+
+  &__item-title {
+    @include typography(h5-stabil);
+    color: colors.$neutral-10-black;
+    margin-bottom: 0;
+
+    @include breakpoints.laptop {
+      @include typography(h4);
+      margin-bottom: 0;
+    }
+  }
+
+  &__item-description {
+    @include typography(body-s);
+    color: colors.$neutral-10-black;
+
+    @include breakpoints.laptop {
+      @include typography(body-m);
+    }
+  }
+}

@@ -1,0 +1,23 @@
+@use "../../breakpoints";
+@use "../../colors";
+@use "../../typography";
+
+.aim__footer {
+  &__legal {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-top: 8px;
+    & a {
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    @include breakpoints.laptop {
+      flex-direction: row;
+      padding: 0;
+    }
+  }
+}

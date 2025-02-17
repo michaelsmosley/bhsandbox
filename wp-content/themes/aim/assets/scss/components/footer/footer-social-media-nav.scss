@@ -1,0 +1,27 @@
+@use "../../breakpoints";
+@use "../../colors";
+@use "../../typography";
+
+.aim__footer {
+  &__contact__title {
+    @include typography.typography(h8);
+    font-weight: 500;
+  }
+
+  &__social-media {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include breakpoints.laptop {
+      width: 276px;
+    }
+
+    &__links {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+  }
+}

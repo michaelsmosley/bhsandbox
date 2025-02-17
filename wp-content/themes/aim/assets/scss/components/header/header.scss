@@ -1,0 +1,274 @@
+@use "../../breakpoints";
+@use "../../colors";
+@use "../../typography";
+@use "../../mixins";
+@use "../../sizes";
+@use "logo";
+
+.aim__header {
+  max-width: sizes.$max-width;
+  margin: auto;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  @include mixins.hide;
+  @include breakpoints.laptop {
+    @include mixins.show(flex);
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 999;
+    top: 0;
+    left: 0;
+
+    &__container {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      @include breakpoints.desktop {
+        grid-template-columns: 400px 1fr;
+      }
+      @include breakpoints.max {
+        grid-template-columns: 510px 1fr;
+      }
+    }
+
+    &__menu {
+      width: 100%;
+      height: 144px;
+      display: flex;
+      justify-items: center;
+      align-items: center;
+      background: colors.$primary-orange;
+
+      .menu-item {
+        & > span {
+          position: relative;
+        }
+      }
+
+      .parent-menu {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        padding: 0 5vw;
+        @include breakpoints.desktop {
+          padding: 0 8vw;
+        }
+
+        & li {
+          font-family: typography.$font-2;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 34px;
+          white-space: nowrap;
+          font-size: 16px;
+          @include breakpoints.desktop {
+            font-size: 20px;
+          }
+        }
+        cursor: default;
+      }
+
+      ul {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      li {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+
+    &__underline {
+      position: absolute;
+      background-color: colors.$black;
+      width: 100%;
+      display: none;
+      transition:
+        bottom 0.3s ease,
+        height 0.3s ease;
+    }
+
+    &__hover__underline {
+      display: block;
+      bottom: 0;
+      height: 1px;
+    }
+
+    &__active__underline {
+      opacity: 0;
+      display: block;
+      bottom: -8px;
+      height: 2px;
+    }
+
+    &__dropdown {
+      background: colors.$primary-orange;
+      width: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      height: 0;
+      transition:
+        height 0.3s ease,
+        opacity 0.3s ease;
+
+      &__menu {
+        display: grid;
+        opacity: 0;
+        grid-template-columns: 300px 1fr;
+        @include breakpoints.desktop {
+          grid-template-columns: 400px 1fr;
+        }
+        @include breakpoints.max {
+          grid-template-columns: 510px 1fr;
+        }
+      }
+
+      &__cta {
+        opacity: 0;
+        visibility: hidden;
+        display: none;
+        cursor: auto;
+        * {
+          cursor: pointer;
+        }
+
+        &__icon {
+          width: 28px;
+          height: 28px;
+          & svg {
+            fill: colors.$white;
+          }
+        }
+        &__button {
+          background-color: colors.$black;
+          border: 1px solid colors.$white;
+          color: colors.$white;
+          font-family: typography.$font-2;
+          font-size: clamp(16px, 1.5vw, 20px);
+          font-weight: 400;
+          line-height: 24px;
+          padding: 20px;
+          transition: background-color 0.3s ease;
+          text-decoration: none;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+        }
+      }
+
+      &__heading {
+        white-space: nowrap;
+        transition: all 0.3s ease;
+        padding: 24px 40px 0 30px;
+        width: 300px;
+
+        @include breakpoints.desktop {
+          padding: 44px 40px 0 50px;
+          width: 400px;
+        }
+
+        @include breakpoints.max {
+          padding: 64px 40px 0 80px;
+          width: 510px;
+        }
+
+        &__title {
+          font-family: typography.$font-1;
+          font-size: 55px;
+          font-weight: 400;
+          line-height: 86px;
+          letter-spacing: -1px;
+          text-wrap: wrap;
+          @include breakpoints.desktop {
+            font-size: 75px;
+          }
+        }
+      }
+
+      &__nav {
+        padding: 64px 5vw;
+        @include breakpoints.desktop {
+          padding: 64px 8vw;
+        }
+
+        &__sub-links {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          @include breakpoints.desktop {
+            gap: 30px;
+          }
+          @include breakpoints.max {
+            gap: 40px;
+          }
+        }
+        &__links {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          grid-template-rows: 1fr;
+          grid-auto-flow: row;
+          gap: 40px;
+          &__section-title {
+            margin-bottom: 12px;
+            height: 20px;
+          }
+
+          &__link {
+            font-family: typography.$font-2;
+            font-weight: 400;
+            line-height: 40px;
+            color: colors.$black;
+            font-size: 16px;
+            @include breakpoints.desktop {
+              font-size: 20px;
+            }
+            text-decoration: underline;
+            &:hover {
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+
+    &--open {
+      .aim__header__active__underline {
+        opacity: 1;
+      }
+      & .aim__header__dropdown__cta {
+        @include typography.typography(button-l);
+        background-color: colors.$black;
+        height: 134px;
+        padding: 32px;
+        opacity: 1;
+        visibility: visible;
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        align-items: center;
+        gap: 20px;
+      }
+      .aim__header__dropdown {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-top: 1px solid colors.$orange-100;
+        pointer-events: auto;
+        &__menu {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

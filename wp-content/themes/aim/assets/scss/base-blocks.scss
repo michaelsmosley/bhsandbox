@@ -1,0 +1,127 @@
+@use "typography" as *;
+@use "colors";
+@use "breakpoints";
+
+// Core Gutenberg blocks styling
+.wp-block-group {
+  // Paragraph
+  p {
+    @include typography(body-l);
+    margin-bottom: 1em;
+  }
+
+  :is(h1, h2, h3, h4, h5, h6) {
+    margin-bottom: 0.5em;
+  }
+
+  // Headings
+  h1 {
+    @include typography(h1);
+  }
+
+  h2 {
+    @include typography(h2);
+  }
+
+  h3 {
+    @include typography(h3);
+  }
+
+  h4 {
+    @include typography(h4);
+  }
+
+  h5 {
+    @include typography(h5);
+  }
+
+  h6 {
+    @include typography(h6);
+  }
+
+  // Lists
+  ul,
+  ol {
+    @include typography(body-m);
+    margin-bottom: 1em;
+    padding-left: 1.5em;
+  }
+
+  // Links
+  a {
+    @include typography(link);
+    text-decoration: underline;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  // Quotes
+  blockquote {
+    border-left: 4px solid colors.$primary-orange;
+    padding-left: 1em;
+    margin: 1.5em 0;
+
+    p {
+      @include typography(body-l);
+      font-style: italic;
+    }
+
+    cite {
+      display: block;
+      margin-top: 1em;
+    }
+  }
+  @include typography(caption);
+
+  // Code
+  pre {
+    background: colors.$neutral-6-gray;
+    padding: 1em;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 1.5em 0;
+
+    code {
+      @include typography(body-s);
+    }
+  }
+
+  // Tables
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+
+    th {
+      @include typography(body-m-emphasis);
+      border-bottom: 2px solid colors.$neutral-6-gray;
+      padding: 0.5em;
+      text-align: left;
+    }
+
+    td {
+      @include typography(body-m);
+      border-bottom: 1px solid colors.$neutral-6-gray;
+      padding: 0.5em;
+    }
+  }
+
+  // Images
+  figure {
+    margin: 1.5em 0;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    figcaption {
+      @include typography(caption);
+      margin-top: 0.5em;
+      text-align: center;
+    }
+  }
+}

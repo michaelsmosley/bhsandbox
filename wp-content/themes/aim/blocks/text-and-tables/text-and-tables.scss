@@ -1,0 +1,156 @@
+@use "../../assets/scss/breakpoints";
+@use "../../assets/scss/colors";
+@use "../../assets/scss/typography";
+
+.aim__text-and-tables {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto;
+  gap: 32px;
+  padding: 20px;
+  @include breakpoints.tablet {
+    padding: 64px 0px;
+    gap: 64px;
+  }
+  @include breakpoints.desktop {
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 2fr;
+    gap: 72px;
+    flex-direction: row;
+  }
+  @include breakpoints.max {
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr;
+    gap: 128px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__body {
+    @include typography.typography(body-m);
+  }
+
+  &__eyebrow {
+    width: 100%;
+    font-family: typography.$font-2;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 110%; /* 15.4px */
+    letter-spacing: -0.14px;
+
+    &__content-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &__line {
+      margin-top: 14px;
+      width: 38px;
+      height: 2px;
+      background: colors.$primary-orange;
+      margin-bottom: 24px;
+
+      &--full {
+        width: 100%;
+      }
+    }
+  }
+
+  &__tables {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    @include breakpoints.laptop {
+      grid-template-rows: auto;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &__table {
+      @include typography.typography(body-m);
+      margin-bottom: 32px;
+
+      &__container {
+        height: 100%;
+        padding: 16px 24px;
+        background: colors.$neutral-7-gray;
+      }
+
+      &__title {
+        padding: 12px 0;
+        @include typography.typography(caption);
+      }
+
+      &__grid {
+        width: 100%;
+        margin-bottom: 42px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        &__header-row {
+          width: fit-content;
+          @include typography.typography(body-m-emphasis);
+        }
+
+        &__header-cell {
+          width: auto;
+          text-align: center;
+          padding: 6px 0;
+          flex: 1;
+        }
+
+        &__body-row {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          border-top: 1px solid colors.$neutral-5-gray;
+          @include typography.typography(body-s);
+
+          /* Make the last row bold */
+          &:last-child {
+            font-weight: 500;
+          }
+        }
+
+        &__body-cell {
+          width: auto;
+          text-align: center;
+          padding: 6px 0;
+          flex: 1;
+
+          &--first {
+            width: 140px;
+            text-align: left;
+            padding: 0 6px;
+          }
+
+          &--last {
+            text-align: right;
+            padding: 0 6px;
+          }
+        }
+      }
+    }
+  }
+
+  &__link {
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    color: colors.$neutral-10-black;
+    @include typography.typography(body-m);
+
+    &__icon {
+      width: 18px;
+      margin-left: 4px;
+    }
+  }
+}

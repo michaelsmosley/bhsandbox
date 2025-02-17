@@ -1,0 +1,130 @@
+@use "../../assets/scss/breakpoints";
+@use "../../assets/scss/colors";
+@use "../../assets/scss/typography" as *;
+
+.benefit-link-list {
+  padding: 32px 0;
+
+  @include breakpoints.tablet {
+    padding: 48px 0;
+  }
+
+  @include breakpoints.desktop {
+    padding: 48px 0;
+  }
+
+  &__eyebrow {
+    @include typography(h8);
+    font-weight: 500;
+    line-height: 110%;
+
+    position: relative;
+    display: inline-block;
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 38px;
+      height: 2px;
+      background-color: colors.$primary-orange;
+    }
+  }
+
+  &__headline {
+    @include typography(h5-stabil);
+    margin-bottom: 48px;
+
+    @include breakpoints.tablet {
+      margin-bottom: 64px;
+    }
+
+    @include breakpoints.laptop {
+      @include typography(h3);
+    }
+
+    a {
+      color: colors.$primary-navy;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+  }
+
+  &__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+
+    @include breakpoints.laptop {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    @include breakpoints.desktop {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+      gap: 20px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    color: colors.$neutral-10-black;
+    transition: transform 0.3s ease;
+
+    @include breakpoints.laptop {
+      gap: 16px;
+    }
+  }
+
+  &__image {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    width: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include breakpoints.laptop {
+      gap: 16px;
+    }
+  }
+
+  &__title {
+    @include typography(h4);
+    @include breakpoints.laptop {
+      @include typography(h3);
+    }
+  }
+
+  &__description {
+    @include typography(body-m);
+
+    @include breakpoints.laptop {
+      @include typography(body-l);
+    }
+  }
+
+  &__cta-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding-bottom: 2px;
+    overflow: hidden;
+  }
+}

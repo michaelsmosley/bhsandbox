@@ -1,0 +1,159 @@
+@use "../../assets/scss/breakpoints.scss";
+@use "../../assets/scss/colors";
+@use "../../assets/scss/typography" as *;
+.wp-block-columns {
+  .accordion-block {
+    margin-right: -20px;
+    margin-left: -20px;
+  }
+}
+
+.accordion-block {
+  margin-right: -20px;
+  margin-left: -20px;
+  padding: 40px 0;
+
+  @include breakpoints.laptop {
+    padding: 48px 0;
+  }
+
+  @include breakpoints.desktop {
+    padding: 48px 0;
+  }
+
+  &__title {
+    display: block;
+    padding: 24px;
+    margin-bottom: 2rem;
+    width: 100%;
+    @include typography(h3);
+
+    @include breakpoints.laptop {
+      @include typography(h2);
+    }
+
+    &--colored {
+      background-color: colors.$primary-orange;
+    }
+
+    @include breakpoints.tablet {
+      display: inline-block;
+      width: auto;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    border-bottom: 1px solid colors.$neutral-6-gray;
+  }
+
+  &__question {
+    padding: 24px 40px;
+    @include breakpoints.laptop {
+      padding: 24px 20px;
+    }
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    &:hover {
+      background-color: colors.$neutral-5-gray;
+    }
+
+    @include typography(h7);
+
+    @include breakpoints.tablet {
+      @include typography(h6);
+    }
+
+    @include breakpoints.laptop {
+      @include typography(h5-stabil);
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__toggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__toggle-icon {
+    height: 24px;
+    width: 24px;
+
+    svg {
+      transition: transform 0.3s ease;
+    }
+  }
+
+  &__question[aria-expanded="true"] {
+    .accordion-block__toggle-icon svg {
+      transform: rotate(45deg);
+    }
+  }
+
+  &__answer {
+    @include typography(body-m);
+    overflow: hidden;
+    height: 0;
+    transition: height 0.3s ease;
+    margin-top: 24px;
+
+    @include breakpoints.laptop {
+      @include typography(body-l);
+    }
+
+    &[hidden] {
+      display: none;
+    }
+
+    padding: 24px 40px;
+    @include breakpoints.laptop {
+      padding: 24px 20px;
+    }
+  }
+
+  &__answer-content {
+    position: relative;
+  }
+
+  &__link-wrapper {
+    margin-top: 1rem;
+    text-align: right;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    @include breakpoints.mobile {
+      justify-content: flex-end;
+    }
+  }
+
+  &__link {
+    @include typography(button-m);
+    color: colors.$black;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    @include breakpoints.mobile {
+      justify-content: flex-end;
+    }
+  }
+}

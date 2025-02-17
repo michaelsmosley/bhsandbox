@@ -1,0 +1,235 @@
+@use "../../assets/scss/breakpoints.scss";
+@use "../../assets/scss/colors";
+@use "../../assets/scss/mixins";
+@use "../../assets/scss/typography" as *;
+
+.wp-block-columns {
+  .faq-block {
+    margin-right: -12px;
+    margin-left: -12px;
+  }
+}
+
+.faq-block {
+  margin-right: -20px;
+  margin-left: -20px;
+  padding: 40px 0;
+  font-family: $font-2;
+  font-weight: 500;
+
+  @include breakpoints.laptop {
+    padding: 48px 0;
+  }
+
+  &__title {
+    display: block;
+    @include typography(h3);
+    background-color: colors.$primary-orange;
+    padding: 24px;
+    margin-bottom: 2rem;
+    width: 100%;
+
+    @include breakpoints.laptop {
+      display: inline-block;
+      width: auto;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    border-bottom: 1px solid colors.$neutral-6-gray;
+  }
+
+  &__question {
+    padding: 24px 40px;
+    @include breakpoints.laptop {
+      padding: 24px 20px;
+    }
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    &:hover {
+      background-color: colors.$neutral-5-gray;
+    }
+
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 125%;
+    letter-spacing: -0.24px;
+
+    @include breakpoints.laptop {
+      font-size: 24px;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__toggle {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    margin-left: 1rem;
+  }
+
+  &__toggle-icon {
+    display: block;
+    transition: transform 0.3s ease;
+    transform-origin: center center;
+
+    .minus-icon {
+      display: none;
+    }
+  }
+
+  &__question[aria-expanded="true"] {
+    .faq-block__toggle-icon {
+      .plus-icon {
+        display: none;
+      }
+      .minus-icon {
+        display: block;
+      }
+    }
+  }
+
+  &__answer {
+    @include typography(body-l);
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 0;
+    padding: 0px 40px;
+
+    &[hidden] {
+      display: none;
+    }
+
+    @include breakpoints.laptop {
+      padding: 0px 20px;
+    }
+
+    &.is-visible {
+      opacity: 1;
+      padding: 24px 40px;
+      height: auto;
+
+      @include breakpoints.laptop {
+        padding: 24px 20px;
+      }
+    }
+  }
+
+  &__answer-content {
+    font-size: 18px;
+    line-height: 155%;
+    letter-spacing: 0.22px;
+
+    @include breakpoints.laptop {
+      font-size: 22px;
+    }
+
+    strong,
+    b {
+      font-weight: 600;
+    }
+
+    em,
+    i {
+      font-style: italic;
+    }
+
+    // Lists and paragraphs
+    :where(p, ul, ol) {
+      margin-bottom: 1em;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    // Inherit WordPress alignment classes
+    .has-text-align-center {
+      text-align: center;
+    }
+    .has-text-align-left {
+      text-align: left;
+    }
+    .has-text-align-right {
+      text-align: right;
+    }
+    .aligncenter {
+      clear: both;
+    }
+
+    // Inherit WordPress font size classes
+    .has-normal-font-size {
+      font-size: var(--wp--preset--font-size--normal);
+    }
+    .has-huge-font-size {
+      font-size: var(--wp--preset--font-size--huge);
+    }
+
+    // Lists
+    ul {
+      list-style-type: disc;
+      padding-left: 1.5em;
+    }
+
+    ol {
+      list-style-type: decimal;
+      padding-left: 1.5em;
+    }
+
+    a {
+      font-size: 18px;
+      line-height: 120%;
+      font-weight: 400;
+
+      &:hover {
+        opacity: 0.8;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__link-wrapper {
+    margin-top: 1rem;
+    text-align: right;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    @include breakpoints.mobile {
+      justify-content: flex-end;
+    }
+  }
+
+  &__link {
+    @include typography(button-m);
+    color: colors.$black;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    @include breakpoints.mobile {
+      justify-content: flex-end;
+    }
+  }
+}

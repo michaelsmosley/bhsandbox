@@ -1,0 +1,233 @@
+@use "sass:map"; // Import the map module
+@use "fonts";
+@use "colors";
+
+$font-1: "Adobe Kis VF", "Georgia", "Times New Roman", serif;
+$font-2: "Stabil Grotesk", "Helvetica Neue", "Arial", sans-serif;
+
+$typography: (
+  h0: (
+    font-family: $font-1,
+    font-size: 200px,
+    font-weight: 400,
+    line-height: 200px,
+    letter-spacing: -4px,
+  ),
+  h1: (
+    font-family: $font-2,
+    font-size: 70px,
+    font-weight: 500,
+    line-height: 84px,
+    letter-spacing: -0.7px,
+  ),
+  h2: (
+    font-family: $font-2,
+    font-size: 54px,
+    font-weight: 500,
+    line-height: 62.1px,
+    letter-spacing: -1px,
+  ),
+  h3: (
+    font-family: $font-2,
+    font-size: 42px,
+    font-style: normal,
+    font-weight: 400,
+    line-height: 50.4px,
+    letter-spacing: -1px,
+  ),
+  h4: (
+    font-family: $font-2,
+    font-size: 32px,
+    font-style: normal,
+    font-weight: 400,
+    line-height: 40px,
+    letter-spacing: -0.32px,
+  ),
+  h5: (
+    font-family: $font-1,
+    font-size: 24px,
+    font-style: normal,
+    font-weight: 400,
+    line-height: 28.8px,
+  ),
+  h5-stabil: (
+    font-family: $font-2,
+    font-size: 24px,
+    font-style: normal,
+    font-weight: 500,
+    line-height: 125%,
+    letter-spacing: -0.24px,
+  ),
+  h6: (
+    font-family: $font-2,
+    font-size: 20px,
+    font-style: normal,
+    font-weight: 400,
+    line-height: 27px,
+  ),
+  h6-emphasis: (
+    font-family: $font-2,
+    font-size: 20px,
+    font-style: normal,
+    font-weight: 600,
+    line-height: 27px,
+  ),
+  h7: (
+    font-family: $font-2,
+    font-size: 16px,
+    font-style: normal,
+    font-weight: 400,
+    line-height: 21.6px,
+  ),
+  h8: (
+    font-family: $font-2,
+    font-size: 14px,
+    font-style: normal,
+    font-weight: 600,
+    line-height: 18.9px,
+  ),
+  body-xl: (
+    font-family: $font-2,
+    font-size: 32px,
+    font-style: normal,
+    font-weight: 500,
+    line-height: 43.2px,
+    letter-spacing: 1px,
+  ),
+  body-l-emphasis: (
+    font-family: $font-2,
+    font-size: 22px,
+    font-style: normal,
+    font-weight: 600,
+    line-height: 30.8px,
+    letter-spacing: 0.22px,
+  ),
+  body-l: (
+    font-family: $font-2,
+    font-size: 22px,
+    font-style: normal,
+    font-weight: 400,
+    line-height: 30.8px,
+    letter-spacing: 0.22px,
+  ),
+  body-m-emphasis: (
+    font-family: $font-2,
+    font-size: 18px,
+    font-style: normal,
+    font-weight: 600,
+    line-height: 27.9px,
+    letter-spacing: 0.18px,
+  ),
+  body-m: (
+    font-family: $font-2,
+    font-size: 18px,
+    font-style: normal,
+    font-weight: 400,
+    line-height: 27.9px,
+    letter-spacing: 0.18px,
+  ),
+  body-s: (
+    font-family: $font-2,
+    font-size: 16px,
+    font-style: normal,
+    font-weight: 400,
+    line-height: 26.4px,
+    letter-spacing: 0.16px,
+  ),
+  body-xs: (
+    font-family: $font-2,
+    font-size: 14px,
+    font-style: normal,
+    font-weight: 500,
+    line-height: 21px,
+  ),
+  caption: (
+    font-family: $font-2,
+    font-size: 13px,
+    font-style: normal,
+    font-weight: 400,
+    // 500 in figma
+    line-height: 19.5px,
+  ),
+  caption-emphasis: (
+    font-family: $font-2,
+    font-size: 13px,
+    font-style: normal,
+    font-weight: 500,
+    // 600 in figma
+    line-height: 19.5px,
+  ),
+  mini-text: (
+    font-family: $font-2,
+    font-size: 15px,
+    font-style: normal,
+    font-weight: 500,
+    line-height: 18px,
+  ),
+  button-s: (
+    color: #000,
+    font-family: $font-2,
+    font-size: 15px,
+    font-style: normal,
+    font-weight: 400,
+    line-height: 18px,
+  ),
+  button-m: (
+    font-family: $font-2,
+    font-size: 18px,
+    font-style: normal,
+    font-weight: 500,
+    line-height: 21.6px,
+  ),
+  button-l: (
+    font-family: $font-2,
+    font-size: 20px,
+    font-style: normal,
+    font-weight: 500,
+    line-height: 24px,
+  ),
+  button-xl: (
+    font-family: $font-2,
+    font-size: 24px,
+    font-style: normal,
+    font-weight: 400,
+    line-height: 34px,
+  ),
+  link: (
+    color: #0053b2,
+    leading-trim: both,
+    text-edge: cap,
+    font-family: $font-2,
+    font-size: 16px,
+    font-style: normal,
+    font-weight: 600,
+    line-height: 24px,
+  ),
+);
+
+// Mixin to apply typography styles
+@mixin typography($type) {
+  $styles: map.get($typography, $type);
+  color: map.get($styles, color);
+  font-family: map.get($styles, font-family);
+  font-size: map.get($styles, font-size);
+  font-weight: map.get($styles, font-weight);
+
+  line-height: map.get($styles, line-height);
+  letter-spacing: map.get($styles, letter-spacing);
+
+  // Optional properties
+  @if map.has-key($styles, font-style) {
+    font-style: map.get($styles, font-style);
+  }
+  @if map.has-key($styles, text-decoration) {
+    text-decoration: map.get($styles, text-decoration);
+  }
+}
+
+// Generate classes for each typography style
+@each $type, $styles in $typography {
+  .#{$type} {
+    @include typography($type);
+  }
+}

@@ -1,0 +1,167 @@
+@use "../../assets/scss/breakpoints.scss";
+@use "../../assets/scss/colors";
+@use "../../assets/scss/typography" as *;
+
+.resources-list {
+  $self: &;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+
+  @include breakpoints.tablet {
+    flex-direction: row;
+  }
+  @include breakpoints.laptop {
+    padding: 0;
+  }
+
+  &__text-content-wrapper {
+    width: 100%;
+
+    @include breakpoints.tablet {
+      width: 50%;
+    }
+  }
+
+  &__text-content {
+    display: flex;
+    max-width: 100%;
+    padding: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+
+    @include breakpoints.desktop {
+      max-width: 416px;
+    }
+  }
+
+  &__headline {
+    @include typography(h3);
+    color: var(--Neutral-10-Black, #000);
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 33.6px */
+    letter-spacing: -1px;
+  }
+
+  &__body {
+    margin-bottom: 24px;
+    max-width: 60ch;
+    @include typography(body-m);
+
+    @include breakpoints.tablet {
+      margin-bottom: 48px;
+    }
+  }
+
+  &__columns-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+
+    @include breakpoints.laptop {
+      gap: 48px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__columns-heading {
+    margin-bottom: 24px;
+    @include typography(h4);
+    color: var(--Neutral-10-Black, #000);
+    leading-trim: both;
+    text-edge: cap;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%; /* 19.2px */
+    letter-spacing: -0.16px;
+  }
+
+  &__columns-heading--empty {
+    display: none;
+
+    @include breakpoints.tablet {
+      display: block;
+    }
+  }
+
+  &__columns {
+    width: 100%;
+    @include breakpoints.tablet {
+      width: 50%;
+    }
+  }
+  &__column {
+    max-width: 322px;
+    @include breakpoints.laptop {
+      padding-left: 20px;
+    }
+  }
+
+  &__items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  &__link {
+    @include typography(link);
+    color: var(--Neutral-10-Black, #000);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 25.2px */
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+  }
+
+  &__text {
+    @include typography(link);
+    color: var(--Neutral-10-Black, #000);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%; /* 25.2px */
+    text-decoration-line: none;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+  }
+
+  &__text,
+  &__link {
+    white-space: wrap;
+  }
+}
+
+.wp-admin {
+  .resources-list {
+    padding: 0;
+  }
+}

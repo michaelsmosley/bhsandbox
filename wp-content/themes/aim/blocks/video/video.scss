@@ -1,0 +1,76 @@
+@use "../../assets/scss/breakpoints.scss";
+
+.video-block {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+
+  &__wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; // 16:9 aspect ratio
+  }
+
+  &__poster {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    .lqip-image,
+    .non-lqip-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__play-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    z-index: 1;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    svg {
+      width: 90px;
+      height: 90px;
+
+      @include breakpoints.tablet {
+        width: 80px;
+        height: 80px;
+      }
+    }
+  }
+
+  &__video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    iframe,
+    video {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+    }
+  }
+}

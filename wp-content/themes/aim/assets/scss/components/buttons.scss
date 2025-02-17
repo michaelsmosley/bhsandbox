@@ -1,0 +1,201 @@
+@use "../breakpoints";
+@use "../typography";
+@use "../colors";
+
+.aim__button--outlined {
+  @extend .h6;
+  width: 100%;
+  border: 1px solid colors.$black;
+  background: colors.$primary-orange;
+  padding: 24px;
+  text-align: center;
+  color: colors.$black;
+  text-decoration: none;
+  text-underline: none;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  color: var(--fg-color);
+  background: var(--bg-color);
+  border: var(--border);
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  svg {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover,
+  &:focus,
+  &:active,
+  &:disabled {
+    svg {
+      transform: rotate(45deg);
+      path {
+        stroke: var(--hover-fg-color);
+      }
+    }
+  }
+
+  &:hover {
+    background: var(--hover-bg-color);
+    color: var(--hover-fg-color);
+  }
+
+  &:focus {
+    color: var(--focus-fg-color);
+    border: var(--focus-border);
+    background: var(--focus-bg-color);
+  }
+
+  &:active {
+    background: var(--active-bg-color);
+    color: var(--active-fg-color);
+    border: var(--active-border);
+  }
+
+  &:disabled {
+    background: var(--disabled-bg-color);
+    color: var(--disabled-fg-color);
+  }
+}
+
+.btn-primary {
+  --fg-color: #{colors.$neutral-10-black};
+  --bg-color: #{colors.$primary-orange};
+  --border: unset;
+
+  --hover-bg-color: #{colors.$neutral-10-black};
+  --hover-fg-color: #{colors.$white};
+
+  --focus-bg-color: #{colors.$primary-orange};
+  --focus-fg-color: #{colors.$neutral-10-black};
+  // --focus-border: 3px solid #{colors.$neutral-10-black};  // not looking good
+  --focus-border: unset;
+
+  --active-bg-color: #{colors.$primary-navy};
+  --active-fg-color: #{colors.$white};
+  --active-border: unset;
+
+  --disabled-bg-color: #{colors.$neutral-5-gray};
+  --disabled-fg-color: #{colors.$white};
+}
+
+.btn-secondary {
+  --fg-color: #{colors.$neutral-10-black};
+  --bg-color: transparent;
+  --border: 1px solid #{colors.$neutral-10-black};
+
+  --hover-bg-color: #{colors.$neutral-10-black};
+  --hover-fg-color: #{colors.$white};
+
+  --focus-bg-color: #{colors.$neutral-10-black};
+  --focus-fg-color: #{colors.$white};
+  // --focus-border: 3px solid #{colors.$neutral-10-black};  // not looking good
+  --focus-border: unset;
+
+  --active-bg-color: #{colors.$primary-orange};
+  --active-fg-color: #{colors.$white};
+  --active-border: 1px solid #{colors.$neutral-6-gray};
+
+  --disabled-bg-color: transparent;
+  --disabled-fg-color: #{colors.$neutral-5-gray};
+}
+
+.btn-tertiary,
+.btn-text-link {
+  padding-bottom: 4px;
+  gap: 8px;
+
+  span {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 1px;
+      bottom: 0;
+      left: 0;
+      background-color: currentColor;
+      transition: width 0.3s ease;
+    }
+  }
+
+  &:hover {
+    span::after {
+      width: 100%;
+    }
+  }
+
+  &:active {
+    svg {
+      path {
+        stroke: colors.$primary-navy;
+      }
+    }
+  }
+
+  --fg-color: #{colors.$neutral-10-black};
+  --bg-color: transparent;
+  --border: unset;
+
+  --hover-bg-color: transparent;
+  --hover-fg-color: #{colors.$neutral-10-black};
+
+  --focus-bg-color: transparent;
+  --focus-fg-color: #{colors.$neutral-10-black};
+  --focus-border: 1px solid #{colors.$neutral-10-black};
+
+  --active-bg-color: transparent;
+  --active-fg-color: #{colors.$primary-navy};
+  --active-border: unset;
+
+  --disabled-bg-color: transparent;
+  --disabled-fg-color: #{colors.$neutral-5-gray};
+}
+
+.btn-text-link {
+  span {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: currentColor;
+      transition: width 0.3s ease;
+    }
+  }
+
+  &:hover {
+    span::after {
+      width: 0;
+    }
+  }
+}
+
+.btn-primary-large {
+  padding: 24px;
+  gap: 10px;
+}
+
+.btn-primary-small {
+  padding: 12px;
+  gap: 8px;
+}
+
+.btn-secondary-large {
+  padding: 24px;
+  gap: 8px;
+}
+
+.btn-secondary-small {
+  padding: 8px;
+  gap: 8px;
+}

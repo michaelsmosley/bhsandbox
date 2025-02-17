@@ -1,0 +1,171 @@
+@use "../../assets/scss/breakpoints";
+@use "../../assets/scss/colors";
+@use "../../assets/scss/typography" as *;
+
+.benefit-card {
+  padding: 32px 0;
+
+  @include breakpoints.tablet {
+    padding: 48px 0;
+  }
+
+  @include breakpoints.laptop {
+    padding: 48px 0;
+  }
+
+  &__content {
+    @include breakpoints.laptop {
+      //padding-left: 24px;
+    }
+  }
+
+  &__text-container {
+    margin-bottom: 64px;
+  }
+
+  &__description {
+    @include typography(h5-stabil);
+
+    @include breakpoints.tablet {
+      @include typography(h3);
+    }
+
+    a {
+      color: colors.$primary-navy;
+      text-decoration-line: underline;
+      text-decoration-style: solid;
+      text-decoration-skip-ink: none;
+      text-decoration-thickness: auto;
+      text-underline-offset: auto;
+
+      &:hover,
+      &:focus,
+      &:active,
+      &:visited {
+        color: colors.$primary-navy;
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+        text-decoration-skip-ink: none;
+        text-decoration-thickness: auto;
+        text-underline-offset: auto;
+      }
+    }
+  }
+
+  &__eyebrow {
+    display: inline-block;
+    margin-bottom: 32px;
+    position: relative;
+    padding-bottom: 16px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 38.007px;
+      height: 1.754px;
+      background-color: colors.$primary-orange;
+    }
+  }
+
+  &__eyebrow-text {
+    @include typography(h8);
+    font-weight: 500;
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+
+    @include breakpoints.laptop {
+      grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+
+      gap: 0;
+    }
+  }
+
+  &__card {
+    position: relative;
+    background: #fff;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px 0;
+    border-top: 1px solid colors.$neutral-5-gray;
+    border-bottom: 1px solid colors.$neutral-5-gray;
+    text-decoration: none;
+    color: colors.$neutral-10-black;
+    transition: all 0.3s ease-out;
+
+    @include breakpoints.laptop {
+      padding: 24px;
+      gap: 16px;
+      border: none;
+    }
+
+    &:hover {
+      background: colors.$neutral-2-gray;
+
+      .benefit-card__cta-icon {
+        transform: rotate(45deg);
+      }
+
+      .benefit-card__cta span {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+    }
+
+    &:focus {
+      border: 3px solid colors.$neutral-10-black;
+
+      .benefit-card__cta-icon {
+        transform: rotate(45deg);
+      }
+
+      .benefit-card__cta span {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+    }
+  }
+
+  &__cta-icon {
+    transition: transform 0.3s ease-out;
+    transform-origin: center;
+    margin-right: 2px;
+    width: 22px;
+    height: 20px;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__card-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 500;
+
+    span {
+      transition: all 0.3s ease-out;
+    }
+  }
+}

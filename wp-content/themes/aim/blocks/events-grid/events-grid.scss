@@ -1,0 +1,25 @@
+@use "../../assets/scss/typography" as *;
+@use "../../assets/scss/breakpoints";
+@use "../../assets/scss/colors";
+@use "../../assets/scss/components/events" as *;
+
+.events-grid-block {
+  // yes this duplicates code but also makes it work in preview ¯\_(ツ)_/¯
+  @extend .events-grid;
+
+  .events-grid {
+    &__column {
+      width: 100%;
+      border: 0;
+    }
+
+    &__container {
+      @include breakpoints.tablet {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @include breakpoints.laptop {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+@use "sass:map";
+// Breakpoints
+$breakpoints: (
+  mobile: 576px,
+  tablet: 768px,
+  laptop: 992px,
+  desktop: 1200px,
+  max: 1920px,
+);
+
+// Breakpoints helpers
+@mixin respond-to($key) {
+  $breakpoint: map.get($breakpoints, $key);
+  @if $breakpoint {
+    @media (min-width: $breakpoint) {
+      @content;
+    }
+  } @else {
+    @error "Breakpoint #{$key} is not defined in $breakpoints.";
+  }
+}
+
+@mixin mobile {
+  @include respond-to(mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @include respond-to(tablet) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @include respond-to(laptop) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @include respond-to(desktop) {
+    @content;
+  }
+}
+@mixin max {
+  @include respond-to(max) {
+    @content;
+  }
+}

@@ -1,0 +1,18 @@
+@use "../breakpoints";
+@use "../colors";
+@use "../typography";
+
+.aim__breadcrumbs {
+  @include typography.typography(body-s);
+  margin-bottom: 48px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 7px;
+  color: colors.$black;
+  & a {
+    text-decoration: none;
+    color: colors.$black;
+  }
+}

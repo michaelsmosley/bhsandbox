@@ -1,0 +1,136 @@
+@use "../../breakpoints";
+@use "../../colors";
+@use "../../typography";
+@use "footer-cta-nav";
+@use "footer-legal-nav";
+@use "footer-social-media-nav";
+@use "footer-main-nav";
+
+.aim__footer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: colors.$primary-orange;
+  padding: 40px;
+  @include breakpoints.laptop {
+    padding: 48px 60px 32px;
+  }
+
+  &__main {
+    display: grid;
+    grid-template-columns: 1fr;
+    flex: 1;
+    padding-bottom: 48px;
+    @include breakpoints.laptop {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: space-between;
+    max-width: 100%;
+    @include breakpoints.laptop {
+      max-height: 880px;
+      max-width: 328px;
+    }
+    @include breakpoints.desktop {
+      max-width: 450px;
+    }
+    &__nav {
+      display: block;
+      @include breakpoints.laptop {
+        display: none;
+      }
+    }
+  }
+
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  &__address {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    line-height: 100%;
+
+    &__details {
+      @include typography.typography(body-s);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      line-height: 100%;
+    }
+  }
+
+  &__logo-container {
+    display: flex;
+    justify-content: start;
+    align-items: end;
+  }
+
+  &__logo-desktop {
+    display: none;
+    @include breakpoints.laptop {
+      display: block;
+      width: 326px;
+    }
+    @include breakpoints.desktop {
+      width: 420px;
+    }
+  }
+
+  &__logo-mobile {
+    display: block;
+    @include breakpoints.laptop {
+      display: none;
+    }
+  }
+
+  &__right {
+    height: 100%;
+    overflow: hidden;
+    flex-direction: column;
+    flex-wrap: wrap;
+    row-gap: 0;
+    display: none;
+    max-height: none;
+    @include breakpoints.laptop {
+      display: flex;
+      gap: 48px;
+    }
+    @include breakpoints.desktop {
+      max-height: 1100px;
+    }
+
+    @include breakpoints.max {
+      max-height: 880px;
+    }
+  }
+
+  &__copyrights {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    border-top: 1px solid colors.$orange-100;
+    padding-top: 32px;
+    gap: 16px;
+    @include breakpoints.laptop {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &__left {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      @include breakpoints.laptop {
+        flex-direction: row;
+      }
+    }
+  }
+}

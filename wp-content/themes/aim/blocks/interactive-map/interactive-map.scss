@@ -1,0 +1,121 @@
+@use "../../assets/scss/breakpoints.scss";
+@use "../../assets/scss/colors.scss";
+@use "../../assets/scss/typography.scss" as *;
+@use "sass:color";
+
+.interactive-map {
+  &__block {
+    padding: 48px 0;
+
+    .btn {
+      padding: 24px;
+      gap: 10px;
+    }
+
+    @include breakpoints.tablet {
+      padding: 48px 0;
+    }
+
+    @include breakpoints.laptop {
+      padding: 48px 0;
+    }
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 64px;
+    align-items: start;
+
+    @include breakpoints.laptop {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-xl);
+    }
+  }
+
+  &__text-container {
+    p {
+      margin-bottom: 16px;
+    }
+    @include breakpoints.laptop {
+      padding-right: var(--spacing-lg);
+      max-width: 600px;
+      margin-right: 64px;
+    }
+  }
+
+  &__eyebrow {
+    @include typography(h8);
+    font-feature-settings:
+      "liga" off,
+      "clig" off;
+    font-weight: 400;
+  }
+
+  &__eyebrow-line {
+    margin-top: 16px;
+    margin-bottom: 32px;
+    width: 38.007px;
+    height: 1.754px;
+    background: colors.$primary-orange;
+  }
+
+  &__heading {
+    @include typography(h3);
+    margin-bottom: 32px;
+  }
+
+  &__description {
+    @include typography(body-m);
+    margin-bottom: 64px;
+  }
+
+  &__visual-container {
+    width: 100%;
+  }
+
+  &__location-buttons {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    gap: 8px;
+    align-self: stretch;
+    flex-wrap: wrap;
+  }
+
+  &__location-button {
+    background: colors.$primary-navy;
+    border: none;
+    display: flex;
+    padding: 10px;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    @include typography(body-xs);
+    color: colors.$white;
+
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: color.adjust(colors.$primary-navy, $lightness: 10%);
+    }
+
+    &.active {
+      background: colors.$primary-orange;
+    }
+
+    &:hover {
+      background-color: #ff9e17;
+    }
+
+    text-decoration: none;
+  }
+}
+
+.wp-admin {
+  .interactive-map {
+    &__block {
+      padding: 0;
+    }
+  }
+}

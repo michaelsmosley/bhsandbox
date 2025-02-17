@@ -1,0 +1,188 @@
+@use "../../assets/scss/typography";
+@use "../../assets/scss/breakpoints";
+@use "../../assets/scss/colors";
+@use "../../assets/scss/mixins";
+
+.aim__testimonials {
+  @include mixins.wider;
+  background: colors.$neutral-7-gray;
+  position: relative;
+  overflow: hidden;
+
+  &--blue {
+    background: colors.$primary-navy;
+    color: colors.$white;
+    span {
+      color: colors.$white;
+    }
+  }
+
+  &__wrap {
+    padding: 48px 40px 24px 40px;
+    @include breakpoints.laptop {
+      padding: 48px 80px 24px 80px;
+    }
+  }
+
+  &__eyebrow {
+    width: 100%;
+    font-family: typography.$font-2;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 110%; /* 15.4px */
+    letter-spacing: -0.14px;
+
+    &__line {
+      margin-top: 14px;
+      width: 38px;
+      height: 2px;
+      background: colors.$primary-orange;
+      margin-bottom: 48px;
+    }
+  }
+
+  &__image {
+    width: 409px;
+    height: 348px;
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__slider-wrap {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  &__slider {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &__content {
+    font-family: typography.$font-2;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 135%;
+    letter-spacing: -0.32px;
+    @include breakpoints.tablet {
+      font-size: 32px;
+      line-height: 125%;
+    }
+  }
+  &__name {
+    margin-top: 24px;
+  }
+  &__affiliation {
+    margin-top: 8px;
+  }
+  &__slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    @include breakpoints.desktop {
+      flex-direction: row;
+    }
+
+    &__left {
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+      margin-left: 0;
+      @include breakpoints.max {
+        justify-content: end;
+        margin-left: 400px;
+      }
+    }
+    &__right {
+      &--has-image {
+        margin: 32px 0 12px 0;
+
+        @include breakpoints.desktop {
+          margin: 0 32px;
+        }
+      }
+    }
+  }
+  &__prev-button {
+    padding: 32px;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid colors.$neutral-6-gray;
+    transform: rotate(180deg);
+    &--white {
+      border: 1px solid colors.$white;
+      background: colors.$primary-navy;
+      & svg {
+        path {
+          stroke: colors.$white;
+        }
+      }
+    }
+  }
+
+  &__next-button {
+    padding: 32px;
+    border: 1px solid colors.$neutral-6-gray;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &--white {
+      border: 1px solid colors.$white;
+      background: colors.$primary-navy;
+      & svg {
+        path {
+          stroke: colors.$white;
+        }
+      }
+    }
+  }
+
+  &__footer {
+    border-top: 1px solid colors.$neutral-10-black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 40px 0 40px;
+    padding: 20px 0;
+    &--white {
+      border-top: 1px solid colors.$white;
+    }
+    @include breakpoints.laptop {
+      margin: 40px 80px 0 80px;
+      padding: 20px;
+    }
+
+    &__buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 4px;
+    }
+    &__numbers {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 4px;
+      @include typography.typography(body-l);
+    }
+    &__total {
+      color: colors.$neutral-6-gray;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 4px;
+    }
+  }
+}

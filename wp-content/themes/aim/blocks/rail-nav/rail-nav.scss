@@ -1,0 +1,148 @@
+@use "../../assets/scss/typography" as *;
+@use "../../assets/scss/breakpoints";
+@use "../../assets/scss/colors";
+
+.rail-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0 80px 0;
+  gap: 24px;
+  align-items: flex-start;
+  align-self: stretch;
+  color: colors.$neutral-10-black;
+
+
+  @include breakpoints.desktop {
+    grid-template-columns: 250px 1fr;
+    padding: 80px 0 160px 0;
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  @include breakpoints.max {
+    gap: 170px;
+  }
+
+  &__content {
+    width: 100%;
+
+    > .wp-block-heading {
+      @include typography(h4);
+      margin-bottom: 24px;
+    }
+
+    > ol.wp-block-list,
+    > ul.wp-block-list {
+      @include typography(body-s);
+      margin-bottom: 24px;
+      list-style-type: decimal;
+      padding-left: 24px;
+
+      li {
+        margin-bottom: 8px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    > p {
+      @include typography(body-s);
+      min-height: 24px;
+    }
+  }
+
+  &__side {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    align-self: stretch;
+    width: 100%;
+    max-width: 100%;
+
+    @include breakpoints.desktop {
+      width: 33%;
+      max-width: 286px;
+    }
+  }
+
+  &__nav {
+    position: sticky;
+    top: 176px;
+    width: 100%;
+  }
+
+  &__headline {
+    @include typography(h6-emphasis);
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    width: fit-content;
+
+    @include breakpoints.desktop {
+      border-bottom: 1px solid colors.$neutral-10-black;
+    }
+  }
+
+  &__select {
+    @include typography(h6);
+    display: block;
+    width: 100%;
+    padding: 16px;
+    padding-right: 48px;
+    gap: 8px;
+    text-overflow: ellipsis;
+    appearance: none;
+    border: 1px solid colors.$neutral-6-gray;
+    cursor: pointer;
+    color: #737373;
+    background-image: url("/wp-content/themes/aim/assets/icons/chevron-right-gray-6.svg");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+
+    &:focus {
+      outline: none;
+      border-color: colors.$primary-navy;
+    }
+
+    @include breakpoints.desktop {
+      display: none;
+    }
+  }
+
+  &__list {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    align-self: stretch;
+
+    @include breakpoints.desktop {
+      display: flex;
+    }
+  }
+
+  &__item {
+    @include typography(h6);
+    display: flex;
+    padding: 16px 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    align-self: stretch;
+  }
+
+  &__link {
+    color: colors.$neutral-10-black;
+    text-decoration: none;
+    width: 100%;
+
+    &:active,
+    &:hover,
+    &:focus {
+      color: colors.$primary-navy;
+    }
+  }
+}

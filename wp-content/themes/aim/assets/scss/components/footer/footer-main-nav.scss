@@ -1,0 +1,88 @@
+@use "../../breakpoints";
+@use "../../colors";
+@use "../../typography";
+
+.aim__footer__nav-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-wrap: wrap;
+
+  @include breakpoints.desktop {
+    flex-direction: column;
+    max-width: 274px;
+  }
+
+  & a {
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  &__arrow-down {
+    transform: rotate(-90deg);
+    transition: transform 0.3s;
+    @include breakpoints.laptop {
+      display: none;
+    }
+  }
+  &[open] {
+    .aim__footer__nav-group__arrow-down {
+      transform: rotate(0deg);
+    }
+  }
+  &__section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    @include typography.typography(body-m);
+    position: relative;
+    list-style: none;
+    border-top: 1px solid colors.$orange-100;
+    padding: 16px 0;
+    @include breakpoints.laptop {
+      padding: 0 0 16px 0;
+    }
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::marker {
+      display: none;
+    }
+
+    &:after {
+      display: none;
+    }
+
+    & > span {
+      @include breakpoints.laptop {
+        margin-top: -4px;
+      }
+      user-select: none;
+    }
+    & > img {
+      user-select: none;
+    }
+    @include breakpoints.laptop {
+      pointer-events: none;
+      @include typography.typography(h8);
+      font-weight: 500;
+      cursor: auto;
+      border: 0;
+    }
+
+    &__links {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding-bottom: 16px;
+      @include breakpoints.laptop {
+        gap: 22px;
+      }
+    }
+  }
+}

@@ -1,0 +1,222 @@
+@use "../../assets/scss/breakpoints";
+@use "../../assets/scss/colors";
+@use "../../assets/scss/typography" as *;
+
+.feature-program {
+  padding: 32px 0;
+
+  // offset the high margins added by rail nav
+  margin-bottom: -80px;
+  @include breakpoints.desktop {
+    margin-bottom: -160px;
+  }
+
+  @include breakpoints.tablet {
+    padding: 48px 0;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 32px;
+
+    @include breakpoints.tablet {
+      margin-bottom: 48px;
+    }
+
+    @include breakpoints.laptop {
+      gap: 64px;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    margin-bottom: 32px;
+    position: relative;
+    padding-bottom: 16px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 38.007px;
+      height: 1.754px;
+      background-color: colors.$primary-orange;
+    }
+  }
+
+  .eyebrow-text {
+    @include typography(h8);
+    font-weight: 500;
+  }
+
+  &__headline {
+    @include typography(h5-stabil);
+    margin-bottom: 32px;
+
+    @include breakpoints.tablet {
+      margin-bottom: 48px;
+    }
+
+    @include breakpoints.laptop {
+      @include typography(h3);
+    }
+
+    a {
+      color: colors.$primary-navy;
+
+      text-decoration-line: underline;
+      text-decoration-skip-ink: none;
+      text-underline-position: from-font;
+    }
+  }
+
+  &__details {
+    display: grid;
+    margin-top: 32px;
+    grid-template-columns: 1fr;
+
+    > *:nth-child(4) {
+      grid-column: auto;
+    }
+
+    @include breakpoints.laptop {
+      margin-top: 48px;
+      grid-template-columns: repeat(3, 1fr);
+
+      > *:nth-child(4) {
+        grid-column: 1 / -1;
+      }
+    }
+  }
+
+  &__detail {
+    display: flex;
+    padding: 24px 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    align-self: stretch;
+
+    border-top: 1px solid colors.$neutral-5-gray;
+
+    &:last-child {
+      border-bottom: 1px solid colors.$neutral-5-gray;
+    }
+
+    @include breakpoints.laptop {
+      padding-bottom: 24px;
+      padding-top: 0;
+      border: none;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 2/1;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__campus-list {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    gap: 8px;
+    flex: 1 0 0;
+    flex-wrap: wrap;
+  }
+
+  &__campus-item {
+    display: flex;
+    padding: 10px;
+    align-items: flex-start;
+    gap: 10px;
+    background: colors.$primary-navy;
+
+    &-text {
+      color: colors.$white;
+    }
+  }
+
+  &__sections {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 64px;
+
+    // @include breakpoints.desktop {
+    //   gap: 64px;
+    // }
+  }
+
+  &__section {
+    &-eyebrow {
+      @include typography(h8);
+      font-weight: 500;
+      line-height: 110%;
+
+      position: relative;
+      display: inline-block;
+      padding-bottom: 16px;
+      margin-bottom: 32px;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 38px;
+        height: 2px;
+        background-color: colors.$primary-orange;
+      }
+    }
+
+    &-headline {
+      @include typography(h5-stabil);
+      margin-bottom: 32px;
+
+      @include breakpoints.laptop {
+        @include typography(h3);
+      }
+
+      a {
+        color: colors.$primary-navy;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+    }
+
+    &-content {
+      @include typography(body-m);
+      margin-bottom: 48px;
+
+      @include breakpoints.tablet {
+        margin-bottom: 64px;
+      }
+
+      @include breakpoints.laptop {
+        @include typography(h3);
+      }
+
+      a {
+        color: colors.$primary-navy;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+    }
+  }
+}

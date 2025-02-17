@@ -1,0 +1,75 @@
+@use "../../assets/scss/breakpoints";
+@use "../../assets/scss/colors";
+@use "../../assets/scss/mixins";
+@use "../../assets/scss/typography" as *;
+
+.logo-marquee {
+  @include mixins.wider;
+  display: flex;
+  padding: 32px 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+
+  @include breakpoints.laptop {
+    padding: 48px 0;
+    gap: 12px;
+  }
+
+  &__headline {
+    @include typography(h5-stabil);
+    padding: 0 20px;
+    width: 100%;
+
+    @include breakpoints.laptop {
+      @include typography(h4);
+
+      padding: 0 80px;
+    }
+  }
+
+  &__logos-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 20px 0;
+  }
+
+  &__logos {
+    display: flex;
+    gap: 12px;
+    animation: marquee-right-to-left 20s linear infinite;
+    white-space: nowrap;
+    width: fit-content;
+
+    @include breakpoints.tablet {
+      gap: 48px;
+    }
+
+    &:hover {
+      animation-play-state: paused;
+    }
+  }
+
+  &__logo {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      height: auto;
+      object-fit: contain;
+    }
+  }
+}
+
+@keyframes marquee-right-to-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-33.333%));
+  }
+}

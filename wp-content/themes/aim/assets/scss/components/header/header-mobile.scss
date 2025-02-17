@@ -1,0 +1,214 @@
+@use "../../breakpoints";
+@use "../../colors";
+@use "../../typography";
+@use "../../mixins";
+
+$topBarHeight: 87px;
+$ctaBarHeight: 134px;
+
+.aim__header-mobile {
+  z-index: 999;
+  @include mixins.show(block);
+  &__top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: $topBarHeight;
+    background-color: colors.$primary-orange;
+    padding: 0 24px;
+
+    &__logo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      svg {
+        width: 152px;
+        height: 55px;
+      }
+    }
+  }
+
+  &__nav-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    @include breakpoints.laptop {
+      width: 273px;
+    }
+
+    &__arrow-down {
+      transform: rotate(-90deg);
+      transition: transform 0.3s;
+      @include breakpoints.laptop {
+        display: none;
+      }
+    }
+
+    &[open] {
+      .aim__header-mobile__nav-group__arrow-down {
+        transform: rotate(0deg);
+      }
+    }
+    &__section {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      list-style: none;
+      border-top: 1px solid colors.$orange-100;
+      padding: 20px 30px;
+      cursor: pointer;
+      &__title {
+        @include typography.typography(caption-emphasis);
+        margin-bottom: 40px;
+      }
+      @include typography.typography(h4);
+      &:after {
+        display: none;
+      }
+      & > span,
+      > img {
+        user-select: none;
+      }
+      @include breakpoints.laptop {
+        pointer-events: none;
+        @include typography.typography(h8);
+        cursor: auto;
+        border: 0;
+      }
+
+      &__links {
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 30px 30px 30px;
+        @include breakpoints.laptop {
+          gap: 22px;
+        }
+
+        &__link {
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 135%;
+          color: colors.$black;
+          & a {
+            text-decoration: none;
+          }
+        }
+      }
+
+      &__sub-links {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      &__sub-link-wrap {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-decoration: none;
+      }
+
+      &__sub-link {
+        color: colors.$black;
+        font-family: typography.$font-2;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 135%; /* 21.6px */
+        text-decoration: none;
+      }
+    }
+  }
+  @include breakpoints.laptop {
+    @include mixins.hide;
+  }
+
+  &__hamburger {
+    border: 0;
+    outline: none;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    .aim__header-mobile__hamburger--open {
+      display: block;
+    }
+    .aim__header-mobile__hamburger--close {
+      display: none;
+    }
+    &--open {
+      .aim__header-mobile__hamburger--open {
+        display: none;
+      }
+      .aim__header-mobile__hamburger--close {
+        display: block;
+      }
+    }
+  }
+
+  &__dropdown {
+    background-color: colors.$primary-orange;
+    position: absolute;
+    top: $topBarHeight;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: none;
+    &__cta {
+      @include typography.typography(button-l);
+      background-color: colors.$black;
+      height: $ctaBarHeight;
+      width: 100%;
+      padding: 32px;
+      opacity: 1;
+      visibility: visible;
+      display: flex;
+      flex-direction: row;
+      justify-content: end;
+      align-items: center;
+      gap: 20px;
+
+      &__icon {
+        width: 28px;
+        height: 28px;
+        & svg {
+          fill: colors.$white;
+        }
+      }
+      &__button {
+        background-color: colors.$black;
+        border: 1px solid colors.$white;
+        color: colors.$white;
+        font-family: typography.$font-2;
+        font-size: clamp(16px, 1.5vw, 20px);
+        font-weight: 400;
+        line-height: 24px;
+        padding: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-decoration: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+      }
+    }
+
+    &--open {
+      min-height: calc(100vh - $ctaBarHeight);
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+}

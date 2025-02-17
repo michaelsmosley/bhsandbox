@@ -1,0 +1,22 @@
+{
+  "name": "aim",
+  "version": "1.0.0",
+  "description": "Aviation Institute of Maintenance Theme",
+  "scripts": {
+    "format": "npx prettier --write \"**/*.scss\"",
+    "sass": "npm run format && sass assets/scss/lqip.scss:assets/css/lqip.css assets/scss/main.scss:assets/css/main.css blocks:assets/css/blocks --watch --style compressed --load-path=./blocks",
+    "browser-sync": "browser-sync start --proxy 'localhost:10003' --files 'assets/css/**/*.css, **/*.php'",
+    "dev": "npm-run-all --parallel sass browser-sync",
+    "sass-build": "rm assets/css/main.css && sass assets/scss/lqip.scss:assets/css/lqip.css assets/scss/main.scss:assets/css/main.css blocks:assets/css/blocks --style compressed"
+  },
+  "devDependencies": {
+    "prettier": "^3.4.1",
+    "sass": "^1.32.8",
+    "browser-sync": "^3.0.3",
+    "npm-run-all": "^4.1.5"
+  },
+  "dependencies": {
+    "browser-sync": "^3.0.3",
+    "npm-run-all": "^4.1.5"
+  }
+}

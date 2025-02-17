@@ -1,0 +1,82 @@
+@use "../../breakpoints";
+@use "../../colors";
+@use "../../typography";
+@use "../../mixins";
+@use "../../sizes";
+
+@mixin animate {
+  transition: all 0.3s ease;
+}
+@mixin shared {
+  padding: 0 0 0 30px;
+  @include breakpoints.desktop {
+    padding: 0 0 0 50px;
+  }
+  @include breakpoints.max {
+    padding: 0 0 0 80px;
+  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  user-select: none;
+  @include animate;
+  svg {
+    position: relative;
+    width: 222px;
+    height: 95px;
+    z-index: 10;
+  }
+
+  #logo-backdrop {
+    background-color: colors.$primary-orange;
+    position: absolute;
+    z-index: 9;
+    left: 102%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    @include animate;
+  }
+}
+
+.aim__header__logo {
+  position: relative;
+  &--page {
+    @include shared;
+    & path {
+      @include animate;
+      fill: colors.$primary-navy;
+    }
+
+    &--scrolled {
+      background-color: colors.$white;
+    }
+  }
+  &--homepage {
+    @include shared;
+    & path {
+      fill: colors.$white;
+    }
+
+    &--scrolled {
+      background-color: colors.$white;
+      & path {
+        fill: colors.$primary-navy;
+      }
+    }
+  }
+}
+
+.aim__header--open .aim__header__logo {
+  @include animate;
+  & path {
+    fill: colors.$black;
+  }
+
+  #logo-backdrop {
+    position: absolute;
+    left: 0;
+    @include animate;
+  }
+}
