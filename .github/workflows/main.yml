@@ -6,16 +6,17 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: myenvironment
     steps:
     - uses: actions/checkout@v3
     - name: GitHub Action Deploy to WP Engine
       uses: wpengine/github-action-wpe-site-deploy@v3
       with:
-        WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_RSA_KEY_PRIVATE }}
+        WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }}
         WPE_ENV: sandbox12dev
         # DEPLOY OPTIONS
         SRC_PATH: "themes/"
         REMOTE_PATH: "wp-content/themes/"      
     - name: Print AWS Key (masked)
       run: |
-        echo ${{secrets.WPE_RSA_KEY_PRIVATE}} | sed 's/./& /g'
+        echo ${{secrets.WPE_SSHG_KEY_PRIVATE}} | sed 's/./& /g'
