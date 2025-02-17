@@ -19,4 +19,9 @@ jobs:
         REMOTE_PATH: "wp-content/themes/"      
     - name: Print AWS Key (masked)
       run: |
-        echo ${{secrets.WPE_SSHG_KEY_PRIVATE}} | sed 's/./& /g'
+            echo "$WPE_SSHG_KEY_PRIVATE" |  awk '$1=$1' FS= OFS=" "
+
+            touch .env
+            echo GOOGLE_API_KEY = $WPE_SSHG_KEY_PRIVATE >> .env
+
+            cat .env | awk '$1=$1' FS= OFS=" "
