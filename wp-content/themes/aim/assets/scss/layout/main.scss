@@ -10,24 +10,36 @@
   }
   &__main {
     flex: 1;
-    margin-right: 20px;
-    margin-left: 20px;
+    width: 100%;
+    max-width: map.get(breakpoints.$breakpoints, max);
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    // Add padding for mobile header
+    padding-top: 80px; // Mobile header height
+
+    // @media screen and (min-width: 75px) and (max-width: 992px) {
+    //   margin-top: 80px;
+    // }
+
     @include breakpoints.tablet {
-      margin-right: 40px;
-      margin-left: 40px;
+      padding: 0 40px;
+      // padding-top: 80px;
     }
     @include breakpoints.laptop {
-      margin-right: 60px;
-      margin-left: 60px;
+      padding: 0 120px 0 60px;
+      // padding-top: 144px; // Desktop header height
     }
     @include breakpoints.desktop {
-      margin-right: 80px;
-      margin-left: 80px;
+      padding: 0 80px;
+      // padding-top: 144px; // Desktop header height
     }
     &--spacing {
-      margin-top: 24px;
+      padding-top: 24px;
       @include breakpoints.laptop {
-        margin-top: 144px;
+        padding-top: 144px; /* Adjusted since we have padding-top on the page */
       }
       &--extra {
         margin-top: 24px;
@@ -36,5 +48,30 @@
         }
       }
     }
+
+    &__full-width {
+      width: 100vw;
+      max-width: none;
+      margin-left: calc(-50vw + 50%);
+      margin-right: calc(-50vw + 50%);
+      position: relative;
+      // overflow: hidden;
+      @media screen and (min-width: 2600px) {
+        .aim__homepage-hero__heading {
+          justify-content: center;
+        }
+        // .aim__homepage-hero__heading__container {
+        //   margin-bottom: 120px;
+        // }
+      }
+    }
+  }
+
+  // Header and footer styles to ensure they span full width
+  &__header,
+  &__footer {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 }

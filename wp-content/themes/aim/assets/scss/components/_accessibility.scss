@@ -1,0 +1,50 @@
+// // Improve touch target sizes for better accessibility
+// a,
+// button,
+// input[type="button"],
+// input[type="submit"],
+// .clickable-element {
+//   // Ensure minimum touch target size
+//   min-height: 44px;
+//   min-width: 44px;
+
+//   // For inline links that shouldn't affect layout
+//   &:not(.btn):not(.button):not([class*="cta"]):not([class*="__dropdown__"]):not(
+//       [class*="__nav-group__"]
+//     ) {
+//     // Use padding instead of height/width for inline elements
+//     padding: 8px;
+//     margin: -8px; // Negative margin to prevent layout shifts
+//     position: relative; // Create a positioning context
+
+//     // For links that are already inside other elements with padding
+//     &.no-touch-padding {
+//       padding: 0;
+//       margin: 0;
+//     }
+
+//     // Exclude links that contain images or SVGs
+//     &:has(img),
+//     &:has(svg) {
+//       padding: 0;
+//       margin: 0;
+//     }
+//   }
+// }
+
+// // Special handling for navigation links that need specific styling
+// .aim__header__dropdown__nav__links__link,
+// .aim__header-mobile__nav-group__section__sub-link {
+//   padding: 8px;
+//   //   padding: inherit;
+//   display: inline-block; // Make links block-level for easier tapping
+// }
+
+// // For pagination links
+// .events-pagination__links a {
+//   min-width: 44px;
+//   min-height: 44px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }

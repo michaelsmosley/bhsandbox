@@ -6,12 +6,21 @@
   @extend .h6;
   width: 100%;
   border: 1px solid colors.$black;
-  background: colors.$primary-orange;
+  background-color: colors.$primary-orange;
   padding: 24px;
   text-align: center;
   color: colors.$black;
   text-decoration: none;
-  text-underline: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: colors.$neutral-10-black;
+    color: colors.$white;
+    border-color: colors.$neutral-10-black;
+  }
 }
 
 .btn {
@@ -199,3 +208,5 @@
   padding: 8px;
   gap: 8px;
 }
+
+/** reverse button color transition **/

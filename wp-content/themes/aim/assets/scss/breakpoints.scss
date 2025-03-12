@@ -48,3 +48,10 @@ $breakpoints: (
     @content;
   }
 }
+
+@mixin tablet-down {
+  @media (max-width: 1023px) {
+    // Adjust pixel value based on your breakpoints
+    @content;
+  }
+}

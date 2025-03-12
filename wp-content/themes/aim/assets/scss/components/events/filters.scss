@@ -1,0 +1,25 @@
+// Create a mixin for the heading style
+@mixin filter-heading-style {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  margin-top: 0;
+  padding: 0;
+}
+
+.events-filters {
+  // Use the heading class to style all headings consistently
+  // regardless of their semantic level (h2, h3, etc.)
+  &__heading {
+    // Apply the mixin to the heading class
+    @include filter-heading-style;
+  }
+}
+
+// If you still have h6 elements elsewhere that need the same style
+h6 {
+  @include filter-heading-style;
+}

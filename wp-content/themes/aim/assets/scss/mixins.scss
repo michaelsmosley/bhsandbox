@@ -1,4 +1,6 @@
 @use "breakpoints";
+@forward "mixins/eyebrow";
+
 @mixin flex-center {
   display: flex;
   align-items: center;
