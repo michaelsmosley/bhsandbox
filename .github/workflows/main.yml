@@ -24,10 +24,10 @@ jobs:
           cd wp-content/themes/aim
           mkdir -p assets/css
           touch assets/css/main.css
-      - name: Build SASS
-        run: |
-          cd wp-content/themes/aim
-          npm run sass-build
+      # - name: Build SASS
+      #   run: |
+      #     cd wp-content/themes/aim
+      #     npm run sass-build
           
       - name: Deploy to WP Engine
         uses: wpengine/github-action-wpe-site-deploy@v3
