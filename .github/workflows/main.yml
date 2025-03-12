@@ -26,6 +26,7 @@ jobs:
           touch assets/css/main.css
       - name: Build SASS
         run: |
+          cd wp-content/themes/aim
           npm run sass-build
           
       - name: Deploy to WP Engine
